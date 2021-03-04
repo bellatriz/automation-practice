@@ -1,8 +1,16 @@
 {
-    "scripts": {
-        "cypress:run": "cypress run"
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+      "cypress": "^4.1.0"
     },
     "cypress-cucumber-preprocessor": {
         "step_definitions": "cypress/support/steps"
+    },
+    "scripts": {
+      "cypress:run": "cypress run",
+      "cypress:open": "cypress open"
     }
 }
