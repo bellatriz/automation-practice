@@ -7,11 +7,15 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('BDD tests + JUnit') {
+        stage('BDD tests') {
             steps {
-                sh 'npm run cypress:run --reporter junit \
-                    --reporter-options "mochaFile=results/my-test-output-[hash].xml"'
+                sh 'npm run cypress:run' 
             }
         } 
+        stage('Reports') {
+            steps {
+                junit '**/target/*.xml'
+            }
+        }            
     }     
 }
