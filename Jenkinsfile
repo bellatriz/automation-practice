@@ -2,20 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Instalação de Dependências') {
             steps {
-                echo 'Building..'
+                sh 'npm install'
             }
         }
-        stage('Test') {
+        stage('BDD tests + JUnit') {
             steps {
-                echo 'Testing..'
+                sh 'npm run cypress:run --reporter junit \
+                    --reporter-options "mochaFile=results/my-test-output-[hash].xml"'
             }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
+        } 
+    }     
 }
