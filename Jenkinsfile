@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Git') {
+            steps {
+                git url: 'https://github.com/bellatriz/automation-practice.git/', branch: 'main'
+            }
+        }
         stage('Instalação de Dependências') {
             steps {
                 sh 'npm install'
@@ -14,7 +19,7 @@ pipeline {
         } 
         stage('Reports') {
             steps {
-                junit '**/target/*.xml'
+                junit 'results/*.xml'
             }
         }            
     }     
